@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<script>
+  function showLocation(position) {
+    for (var i in position) {
+      document.write(i+':'+position[i]);
+      document.write('<br>');
+    }
+    var coords = position.coords;
+    for (var i in coords) {
+      document.write(i+':'+coords[i]);
+      document.write('<br>');
+    }
+  }
+
+  function showError(error) {
+    console.log(error);
+  }
+
+  if (navigator.geolocation) {
+    var gl = navigator.geolocation;
+    gl.getCurrentPosition(showLocation,showError,{
+      //enableHighAcuracy: true
+    });
+  } else {
+    document.write('not support');
+  }
+</script>
+</body>
+</html>
