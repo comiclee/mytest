@@ -18,13 +18,17 @@
   }
 
   function showError(error) {
-    console.log(error);
+    for (var i in error) {
+      document.write(i+':'+error[i]);
+      document.write('<br>');
+    }
   }
 
   if (navigator.geolocation) {
     var gl = navigator.geolocation;
     gl.getCurrentPosition(showLocation,showError,{
-      //enableHighAcuracy: true
+      //enableHighAccuracy: true
+      timeout: 3000
     });
   } else {
     document.write('not support');
