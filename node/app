@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var program = require('commander');
 
 function range(val) {
@@ -19,11 +21,18 @@ program
 .option('-l, --list <items>', 'IP列表', list)
 
 program
-.command('deploy <name>')	//命令和参数不同
+.command('deploy <name>')
 .description('部署一个服务节点')
 .action(function(name){
-console.log(arguments[1].option);
+console.log('Deploying "%s"', name);
 });
 
-program.parse(process.argv);	//转换用户输入
+program.parse(process.argv);
 
+console.log(' chdir - %s ', program.chdir);
+console.log(' config - %s ', program.config);
+console.log(' max: %j', program.max);
+console.log(' seed: %j', program.seed);
+program.range = program.range || [];
+console.log(' range: %j..%j', program.range[0], program.range[1]);
+console.log(' list: %j', program.list);
