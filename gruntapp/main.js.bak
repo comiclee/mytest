@@ -1,0 +1,17 @@
+require.config({
+ baseUrl: '',
+ shim: {
+  $: {
+      exports: 'zepto'
+  },
+  FastClick: {
+   exports: 'FastClick'
+  }
+ },
+ paths: {
+  '$': 'src/zepto',
+  'FastClick': 'src/fastclick'
+ }
+});
+requirejs(['FastClick'], function (b) {
+});

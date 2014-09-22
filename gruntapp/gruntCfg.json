@@ -1,0 +1,20 @@
+{
+  "requirejs": {
+    "main": {
+      "options": {
+        "baseUrl": "",
+        "paths": {
+          "$": "src/zepto",
+          "FastClick": "src/fastclick"
+        },
+        "web": {
+          "include": [
+            "$",
+            "FastClick"
+          ],
+          "out": "dest/libs.js"
+        }
+      }
+    }
+  }
+}
