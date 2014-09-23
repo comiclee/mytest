@@ -12,7 +12,13 @@
     "grunt-contrib-requirejs": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-strip": "~0.2.1"
+    "grunt-strip": "~0.2.1",
+    "gulp-usemin": "^0.3.8",
+    "gulp": "^3.8.8",
+    "gulp-uglify": "^1.0.1",
+    "gulp-minify-html": "^0.1.5",
+    "gulp-minify-css": "^0.3.10",
+    "gulp-rev": "^1.1.0"
   },
   "dependencies": {
     "express": "3.x"
