@@ -71,6 +71,8 @@ function render(src,rotation) {
       imageWidth = Math.round(imageHeight*ratio);
     }
 
+    $('#info').html($('#info').html()+', 转化后尺寸：'+imageWidth+' x '+imageHeight);
+
 
     image.width = imageWidth;
     image.height = imageHeight;
@@ -93,8 +95,6 @@ function render(src,rotation) {
       startX = -imageWidth;
       startY = -imageHeight;
     }
-
-    $('#info').html($('#info').html()+', 转化后尺寸：'+canvas.width+' x '+canvas.height);
 
     ctx.rotate(rotation*Math.PI/180);
     drawImageIOSFix(ctx,image,startX,startY,imageWidth,imageHeight);
