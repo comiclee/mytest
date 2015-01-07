@@ -9,17 +9,12 @@
   <script>var MT_WM = {}</script>
 </head>
 <body>
-<form id="picform" action="saveFile.php" method="post" enctype="multipart/form-data">
-  <input id="pic-input" type="file" name="pic" accept="image/*">
-  <button id="submit" type="button">压缩并提交</button>
-  <button id="submit2" type="submit">提交原文件</button>
-</form>
-<p id="info"></p>
-<canvas id="pic-frame"></canvas>
-<div id="result"></div>
+
+<input id="camera" type="file" accept="image/*">
+<canvas id="canvas"></canvas>
 
   <script src="jslib.js"></script>
   <script src="exif.js"></script>
-  <script src="camera.js"></script>
+  <script src="camera3.js"></script>
 </body>
 </html>
