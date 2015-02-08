@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+<head>
+  <title></title>
+</head>
+<body ng-controller="TextController">
+  <p>{{someText.message}}</p>
+  <p ng-bind="someText.message2"></p>
+  <input ng-model="someText.message">
+  <script src="../common/js/angular.min.js"></script>
+  <script>
+    var myAppModule = angular.module('myApp',[]);
+    myAppModule.controller('TextController', function($scope) {
+      var someText = {};
+      someText.message = 'You have started your journey.';
+      $scope.someText = someText;
+      var say = function() {
+        someText.message2 = someText.message+'hehe';
+      };
+      $scope.$watch('someText.message',say);
+    });
+  </script>
+</body>
+</html>
