@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<form id="myForm" action="result.php" method="post" enctype="multipart/form-data">
+  描述：<input name="name">
+  文件：<input name="file" type="file">
+  <button id="submit" type="submit">提交</button>
+</form>
+<script src="../common/js/jquery-1.11.2.min.js"></script>
+<script src="../common/js/jquery.form.min.js"></script>
+<script>
+$('#myForm').ajaxForm(function() { 
+  alert("提交成功"); 
+}); 
+</script>
+</body>
+</html>

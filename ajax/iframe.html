@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+<form id="myForm" action="result.php" method="post" enctype="multipart/form-data">
+  描述：<input name="name">
+  文件：<input name="file" type="file">
+  <button id="submit" type="submit">提交</button>
+</form>
+<script src="../common/js/jquery-1.11.2.min.js"></script>
+<script>
+  $('#myForm').on('submit',function() {
+    var jQorigForm = $(this);
+
+    // 创建一个用于存放结果的iframe
+    var iframeName = 'form-target-'+new Date().valueOf();
+    var jQiframe = $('<iframe id="'+iframeName+'" name="'+iframeName+'" style="position:absolute;left:-9999px;top:-9999px"></iframe>')
+      .appendTo('body');
+
+    // 创建一个临时表单，令其提交到iframe中
+    var jQform = jQorigForm.clone()
+      .html('')
+      .appendTo('body')
+      .attr('target',iframeName)
+      .css({position:'absolute',left:'-9999px',top:'-9999px'});
+
+    // 拷贝输入框到临时表单
+    jQorigForm.find('input').each(function() {
+      var jQinput = $(this);
+      var jQnewInput = jQinput.clone();
+      if (this.type=='file') { // 由于FileInput不能赋值，所以只能交换两个form的元素的权宜之计
+        jQinput.before(jQnewInput);
+        jQinput.appendTo(jQform);
+      } else {
+        jQnewInput.appendTo(jQform);
+      }
+    });
+
+    // 提交临时表单
+    jQform.submit().remove();
+
+    // 设个定时从iframe中读取结果
+    var interval = setInterval(function() {
+      var content = jQiframe.contents().find('body').html();
+      if (content) {
+        alert(content);
+        jQiframe.remove();
+        clearInterval(interval);
+      }
+    }, 400);
+
+    return false;
+  });
+</script>
+</body>
+</html>
